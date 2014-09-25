@@ -1242,6 +1242,7 @@ $arguments = Get-Attr -obj $params -name arguments
 $ensure = Get-Attr -obj $params -name ensure -default "present"
 $username = Get-Attr -obj $params -name user_name
 $password = Get-Attr -obj $params -name user_password
+$return_code = Get-Attr -obj $params -name expected_return_code -default 0
 
 #Construct the DSC param hashtable
 $dscparams = @{
@@ -1250,6 +1251,7 @@ $dscparams = @{
     productid = $productid
     arguments = $arguments
     ensure = $ensure
+    returncode = $return_code
 }
 
 if (($username -ne $null) -and ($password -ne $null))
